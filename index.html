@@ -25,11 +25,11 @@
 
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1">
-                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button id="minusOne" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="first-input" type="text" class="form-control text-center" value="1">
+                           <button id="plus-button" class="btn btn-default"><i class="fas fa-plus"></i></button>
                         </div>
-                        <h5>$1219</h5>
+                        <h5>$<span id="price">1219</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -43,12 +43,11 @@
                      </div>
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input id ="first-input" type="text" class="form-control text-center" value="1">
-                           <button id = "plus-button"class="btn btn-default"><i class="fas fa-plus"></i></button>
-
+                           <button id="minusTwo" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="second-input" type="text" class="form-control text-center" value="1">
+                           <button id="plus2-button"class="btn btn-default"><i class="fas fa-plus"></i></button>
                         </div>
-                        <h5>$59</h5>
+                        <h5>$<span id="caching-price">59</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -80,15 +79,92 @@
 
 
    <script>
-      document.getElementById("plus-button").addEventListener("click",function(){
-         var inputValue = document.getElementById("first-input").value;
-         var outString = parseFloat(inputValue);
-         var total = outString ;
-         console.log(total);
-   
-            
-         );
-      })
+
+     document.getElementById("plus-button").addEventListener("click",function(){
+
+
+        var eachPrice = 1219;
+       productNumber("first-input");
+       productPrice("price",eachPrice);
+
+      // var innerValue = document.getElementById("first-input").value;
+      //   var outString = parseFloat(innerValue);
+      //   var total = outString + 1;
+      //   document.getElementById("first-input").value = total;
+      
+      
+
+      //  var price = document.getElementById("price").innerText;
+      //  var notString = parseFloat(price);
+      //  var totalPrice = notString + 1219;
+      //  document.getElementById("price").innerText = totalPrice;
+        
+     })
+
+     document.getElementById("plus2-button").addEventListener("click",function(){
+        var caching = 59;
+      productNumber("second-input");
+      productPrice("caching-price",caching);
+     })
+
+     function productPrice(id , eachPrice){
+      
+       var price = document.getElementById(id).innerText;
+       var notString = parseFloat(price);
+       var totalPrice = notString + eachPrice;
+       document.getElementById(id).innerText = totalPrice;
+     }
+
+    function productNumber(id){
+      var innerValue = document.getElementById(id).value;
+        var outString = parseFloat(innerValue);
+        var total = outString + 1;
+        document.getElementById(id).value = total;
+    }
+// minus 
+
+document.getElementById("minusOne").addEventListener("click", function(){
+   var eachPrice= 1219;
+productPriceMinus("price",eachPrice);
+productNumberMinus("first-input");
+})
+
+    function productPriceMinus(id , eachPrice){
+      
+      var price = document.getElementById(id).innerText;
+      var notString = parseFloat(price);
+      var totalPrice = notString - eachPrice;
+      document.getElementById(id).innerText = totalPrice;
+    }
+
+   function productNumberMinus(id){
+     var innerValue = document.getElementById(id).value;
+       var outString = parseFloat(innerValue);
+       var total = outString - 1;
+       document.getElementById(id).value = total;
+   }
+
+   // for caching
+   document.getElementById("minusTwo").addEventListener("click", function(){
+   var caching = 59;
+cachingPriceMinus("caching-price",caching);
+cachingNumberMinus("second-input");
+})
+
+    function cachingPriceMinus(id , eachPrice){
+      
+      var price = document.getElementById(id).innerText;
+      var notString = parseFloat(price);
+      var totalPrice = notString - eachPrice;
+      document.getElementById(id).innerText = totalPrice;
+    }
+
+   function cachingNumberMinus(id){
+     var innerValue = document.getElementById(id).value;
+       var outString = parseFloat(innerValue);
+       var total = outString - 1;
+       document.getElementById(id).value = total;
+   }
    </script>
 </body>
 
